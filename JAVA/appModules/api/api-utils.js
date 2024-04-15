@@ -1,18 +1,16 @@
-async function getData() {
-    try {
-        const response = await fetch('https://api-code-2.practicum-team.ru/games');
-        const data = await response.json(); 
-        return data
-    } catch (error) {
-        console.log(error);
-    }
-}
+async function getData(url) {
+	try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Ошибка при получении данных:', error);
+    return []; 
+}}
 
 function getRandomGame(array) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex];
-} 
+	const randomIndex = Math.floor(Math.random() * array.length);
+	return array[randomIndex];
+}
 
-module.exports =  
-    getData,
-    getRandomGame
+module.exports = { getData, getRandomGame };
